@@ -1,24 +1,21 @@
 import os
 from pathlib import Path
 
-# Base directory of the application
-BASE_DIR = Path(__file__).resolve().parent
+# Get the absolute path of the directory where this config.py file is located.
+# This makes the path independent of where the script is run from.
+_current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Data path: defaults to /app/data/ within the project, can be overridden by NUMI_DATA_PATH
-# As per spec, csv/tsv files will be in /app/data, so if BASE_DIR is /app, then data is BASE_DIR / "data"
-# If running locally and BASE_DIR is different, NUMI_DATA_PATH should be set.
-DEFAULT_DATA_PATH = BASE_DIR / "data"
-DATA_PATH = Path(os.getenv("NUMI_DATA_PATH", DEFAULT_DATA_PATH))
+# Define the data path relative to this file's location.
+# This assumes the 'data' directory is at the same level as config.py.
+DATA_PATH = os.path.join(_current_dir, 'data')
+
+# TTL for cached profiles in seconds (default: 24 hours)
+PROFILE_TTL_SECONDS = int(os.environ.get("NUMI_PROFILE_TTL_SECONDS", 86400))
 
 ASSESSMENT_QUESTIONS_FILE = DATA_PATH / "assessment_questions.csv"
 SCENARIO_MAPPING_FILE = DATA_PATH / "scenario_mapping.json"
 FLOWPRINT_LABELS_FILE = DATA_PATH / "Flowprint_Labels.tsv"
 SUBTYPE_GLOSSARY_FILE = DATA_PATH / "Subtype_Glossary.csv"
-
-# Profile Store TTL (in seconds)
-# Defaults to 24 hours (24 * 60 * 60 = 86400 seconds)
-DEFAULT_PROFILE_TTL_SECONDS = 24 * 60 * 60
-PROFILE_TTL_SECONDS = int(os.getenv("NUMI_PROFILE_TTL_SECONDS", DEFAULT_PROFILE_TTL_SECONDS))
 
 # Likert score mapping
 LIKERT_SCORE_MAP = {

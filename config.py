@@ -30,6 +30,9 @@ LIKERT_MAPPING = {
     "Strongly Agree": 5
 }
 
+# Backward-compatibility alias (older modules expect this name)
+LIKERT_SCORE_MAP = LIKERT_MAPPING
+
 # Order for Creation Instinct tie-breaking (if raw scores and endorsed items are tied)
 CREATION_SUBTYPE_TIEBREAK_ORDER = [
     "Architect", "Storyteller", "Visionary", "Artist", "Activator", "Connector"

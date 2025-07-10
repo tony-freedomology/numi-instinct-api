@@ -1,0 +1,79 @@
+{
+  "ER-6": {
+    "prompt_key": "Free Saturday – choose your plan",
+    "A": "Bursty",
+    "B": "Steady",
+    "C": "Cyclical",
+    "D": "Reactive"
+  },
+  "IS-6": {
+    "prompt_key": "Learning a new concept – choose your fastest hook",
+    "A": "Absorber",
+    "B": "Analyzer",
+    "C": "Pattern-Seeker",
+    "D": "Synthesizer"
+  },
+  "EP-6": {
+    "prompt_key": "Criticism – first response",
+    "A": "Externalizer",
+    "B": "Internalizer",
+    "C": "Suppressor",
+    "D": "Expressor"
+  },
+  "DS-6": {
+    "prompt_key": "Team can't pick a restaurant",
+    "A": "Instinctive",
+    "B": "Analytical",
+    "C": "Emotional",
+    "D": "Delayer"
+  },
+  "PI-6": {
+    "prompt_key": "New project kick-off",
+    "A": "System-Builder",
+    "B": "Theme-Spotter",
+    "C": "Chaos-Resister",
+    "D": "Pattern-Rejecter"
+  },
+  "SR-6": {
+    "prompt_key": "Mistake minutes before presentation",
+    "A": "Flow",
+    "B": "Fight",
+    "C": "Flight",
+    "D": "Freeze"
+  },
+  "EN-6": {
+    "prompt_key": "Meeting moves to busy café",
+    "A": "Seeker",
+    "B": "Stabilizer",
+    "C": "Sensitive",
+    "D": "Adapter"
+  },
+  "TO-6": {
+    "prompt_key": "Surprise day off",
+    "A": "Past",
+    "B": "Present",
+    "C": "Future",
+    "D": "Present"
+  },
+  "SI-3": {
+    "prompt_key": "End-of-off-site evening",
+    "A": "Social Energizer",
+    "B": "Social Conserver",
+    "C": "Intimate Group",
+    "D": "Crowd Lover"
+  },
+  "SI-6": {
+    "prompt_key": "Networking event layout",
+    "A": "Intimate Group",
+    "B": "Intimate Group",
+    "C": "Crowd Lover",
+    "D": "Crowd Lover"
+  },
+  "CI-8": {
+    "prompt_key": "Friend asks for help",
+    "A": "Architect",
+    "B": "Storyteller",
+    "C": "Visionary",
+    "D": "Artist"
+  }
+} 

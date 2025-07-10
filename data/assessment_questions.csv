@@ -1,0 +1,101 @@
+Instinct,Slot,Subtype,Item Text,Answer Type,Answer Options
+Energy Rhythm,ER-1,Bursty,"I hit peak productivity in short, focused bursts—even if I fizzle afterward.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Energy Rhythm,ER-2,Steady,Consistency beats intensity for me; I prefer small but consistent daily progress over focused bursts,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Energy Rhythm,ER-3,Cyclical,My motivation levels follow clear cycles—high-drive phases followed by recharge phases.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Energy Rhythm,ER-4,Reactive,Who I’m with and where I am heavily shapes how much I get done.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Energy Rhythm,ER-5,Reverse,"I struggle to stay engaged during extended, calm work sessions.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Energy Rhythm,ER-6,All,Free Saturday: choose your plan.,Scenario,A | B | C | D
+Energy Rhythm,ER-7,Bursty/Reactive,A flash of inspiration will capture my attention and I will drop other plans,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Energy Rhythm,ER-8,Steady,I’d rather do a little each day to stay productive than wait for a big push.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Energy Rhythm,ER-9,Cyclical,My motivation levels tend to come in waves; forcing productivity in an off cycle doesn't work,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Energy Rhythm,ER-10,Reactive,Switching surroundings maintains my focus more so than taking a break in place.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Input Style,IS-1,Absorber,I typically feel my gut reaction to new ideas before I process and analyze the information.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Input Style,IS-2,Analyzer,"Anecdotes are interesting, but I need numbers and verified facts to evaluate something.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Input Style,IS-3,Pattern-Seeker,I easily connect dots across unrelated topics to reveal themes or patterns.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Input Style,IS-4,Synthesizer,I like to combine my gut feelings with hard data before I form an opinion.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Input Style,IS-5,Reverse,Data alone rarely captures my attention; it needs to be wrapped in a story or imagery to hold value.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Input Style,IS-6,All,Learning a new concept—choose your fastest hook.,Scenario,A | B | C | D
+Input Style,IS-7,Pattern-Seeker / Absorber,I instinctively read between the lines of conversations or text and notice implicit messages easily.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Input Style,IS-8,Analyzer,Clear definitions and step-by-step logic help me accept new information.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Input Style,IS-9,Synthesizer,I naturally translate complex ideas into their underlying basic concepts.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Input Style,IS-10,Absorber,My own feelings are data points—I consider my emotional signals or intuition alongside facts.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Emotional Processing,EP-1,Internalizer,I need to reflect and process emotions before I can discuss them out loud.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Emotional Processing,EP-2,Externalizer,Talking through my feelings with someone helps me actively process them.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Emotional Processing,EP-3,Suppressor,I often push my emotions aside so I can stay productive.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Emotional Processing,EP-4,Expressor,People can usually read my emotions on my face.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Emotional Processing,EP-5,Reverse,I rarely feel the need to discuss personal feelings with anyone.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Emotional Processing,EP-6,All,Criticism scenario: choose your first response.,Scenario,A | B | C | D
+Emotional Processing,EP-7,Internalizer,Writing helps me sort through intense emotions.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Emotional Processing,EP-8,Externalizer,"When I’m upset, I’m likely to vent to someone right away as a form of emotion processing.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Emotional Processing,EP-9,Suppressor,I tuck feelings away to focus on tasks.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Emotional Processing,EP-10,Expressor,My moods are transparent.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-1,Instinctive,I usually know my answer within seconds of hearing a choice.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-2,Analytical,"Before making a decision, I need evidence and facts to analyze the choices.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-3,Emotional,Others’ emotions weigh heavily in my decisions if my choice will impact them.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-4,Delayer,I often put off making a decision until the circumstance forces my hand.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-5,Reverse,"Once I make a decision, it is rare that I’ll change my mind.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-6,All,Team can’t agree on a restaurant—what do you do?,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-7,Instinctive,I value speed when making decisions to maintain momentum—an 80% right decision today beats 100% next week.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-8,Analytical,I find decision making less stressful when there are concrete facts to evaluate.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-9,Emotional,"If a choice might hurt someone’s feelings, I keep looking for a gentler option.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Decision Style,DS-10,Delayer,Too many options can paralyze my decision making; I wait and hope one stands out.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Pattern Instinct,PI-1,System-Builder,My mind organizes complex tasks into workflows.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Pattern Instinct,PI-2,Theme-Spotter,I link ideas across unrelated topics quickly.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Pattern Instinct,PI-3,Chaos-Resister,I struggle to think in messy environments.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Pattern Instinct,PI-4,Pattern-Rejecter,Rigid systems feel suffocating—I’d rather improvise.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Pattern Instinct,PI-5,Reverse,I’m perfectly comfortable working without a defined process.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Pattern Instinct,PI-6,All,New project kick-off: choose your instinctive first move.,Scenario,A | B | C | D
+Pattern Instinct,PI-7,System-Builder,I like to create templates or frameworks others can reuse to improve efficiency and process.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Pattern Instinct,PI-8,Theme-Spotter,"I’m drawn to symbolism, metaphors, or storylines that unveil hidden themes.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Pattern Instinct,PI-9,Chaos-Resister,I struggle to maintain momentum if the next steps are unclear.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Pattern Instinct,PI-10,Pattern-Rejecter,I view rules as suggestions—I tweak or ignore them if a better approach appears.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-1,Flow,Pressure makes diamonds: tight deadlines crank my focus and energy up a notch.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-2,Fight,"Confrontation triggers action, not retreat.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-3,Flight,Under stress I look for ways to step away and regroup.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-4,Freeze,High pressure situations can paralyze me—I overthink instead of act.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-5,Reverse,I stay centered while others panic.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-6,All,Minutes before a presentation you find a mistake—what do you do?,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-7,Flow,Stress sparks creativity—I find solutions I wouldn’t see otherwise.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-8,Flight,My first move in a tense situation is to remove myself from it.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-9,Freeze,Rumination overrides action in high pressure.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Stress Response,SR-10,Fight,I become more assertive and energized when challenged.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-1,Seeker,Novel environments boost my energy and motivation.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-2,Stabilizer,Routine spaces help me concentrate.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-3,Sensitive,"Noise, bright lights, or clutter easily drain me.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-4,Adapter,"I can be productive almost anywhere—coffee shop, office, park.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-5,Reverse,I find it more distracting than energizing to change my workspace mid-project.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-6,All,Meeting moves to a busy café—your reaction?,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-7,Seeker,"When I travel, I gain creative momentum.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-8,Sensitive,"I notice subtle shifts in temperature, lighting, or background noise more than most people.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-9,Stabilizer,Having a standard desk setup and routine keeps me from wasting mental energy.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Environment Response,EN-10,Adapter,"If my surroundings change, I adapt without missing a beat.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-1,Past,I often replay past events to understand what went right or wrong.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-2,Present,The current moment has my full attention.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-3,Future,Long-term planning energizes me.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-4,Past,I lean on past lessons before acting.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-5,Reverse,Dwelling on what’s already happened feels like wasted energy.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-6,All,Surprise day off—what’s your first thought?,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-7,Present,Enjoying today outranks chasing tomorrow.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-8,Future,Creating detailed roadmaps keeps me motivated and on track.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-9,Past,I often share stories from my past when connecting with others.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Time Orientation,TO-10,Present,Spontaneous opportunities beat sticking to a strict plan.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Social Instinct,SI-1,Social Energizer,I often feel more creative after spending time with other people.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Social Instinct,SI-2,Social Conserver,I need quiet time to refuel after group activities.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Social Instinct,SI-3,All,End-of-off-site evening—choose your move.,Scenario,A | B | C | D
+Social Instinct,SI-4,Intimate Group,I'm most comfortable interacting with just a few people at a time.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Social Instinct,SI-5,Crowd Lover,Large events give me a surge of energy.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Social Instinct,SI-6,All,Networking event—choose your ideal setup.,Scenario,A | B | C | D
+Social Instinct,SI-7,Feedback Seeker,I get uncomfortable if too long passes without input on my work.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Social Instinct,SI-8,Feedback Defender,Unsolicited critique puts me on guard.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-1,Architect,I naturally design systems or frameworks that others can reuse.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-2,Storyteller,Crafting stories or narratives is my favorite way to share ideas.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-3,Visionary,Imagining what doesn’t exist yet excites me more than perfecting what does.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-4,Artist,"I’m driven to turn emotion or beauty into tangible form—art, design, sound.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-5,Activator,I get a rush from motivating others into action.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-6,Connector,Building community and connecting people feels like meaningful work.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-7,Reverse Architect,Documenting processes bores me.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-8,All,Friend asks for project help—what do you jump to first?,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-9,Architect,"I often sketch diagrams, blueprints, or outlines before building anything.",Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-10,Artist,I think in sensory language.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-11,Activator,Urgency is part of my creative pitch.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree
+Creation Instinct,CI-12,Visionary,My notes are full of “someday” ideas.,Likert,Strongly Agree | Agree | Neutral | Disagree | Strongly Disagree

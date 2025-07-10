@@ -1,20 +1,16 @@
-# NuMi Instinct Map API - Technical Brief for Frontend Engineers
+# NuMi Instinct Map API - Technical Brief for App Integration
 
-*Version 1.0 (Generated: {{CURRENT_DATE}})*
+*Version 1.1 (Generated: {{CURRENT_DATE}})*
 
 ## 1. Introduction
 
-This document provides frontend engineers with the necessary information to integrate with the NuMi Instinct Map API. This API is responsible for scoring the 100-item NuMi Instinct Assessment and returning a detailed user profile.
+This document provides frontend and mobile engineers with the necessary information to integrate with the NuMi Instinct Map API. This API is responsible for scoring the 100-item NuMi Instinct Assessment and returning a detailed user profile.
 
-### 1.1. Purpose of the Assessment
+### 1.1. API Overview
 
-The NuMi Instinct Assessment helps users understand their innate tendencies across 10 core instincts. By identifying their dominant patterns and potential areas for growth, users can gain insights into how they naturally approach various aspects of life, such as energy management, information processing, decision-making, and creation. The goal is to empower users to build a life that aligns with their natural wiring, leading to greater flow and fulfillment.
-
-### 1.2. API Overview
-
-The API serves as a centralized scoring engine. Frontends (web and mobile applications) will:
+The API serves as a centralized scoring engine. Client applications (web and mobile) will:
 1.  Collect the user's answers to the 100 assessment items.
-2.  Send these answers, along with a `user_id`, to the API's `/submit` endpoint.
+2.  Send these answers, along with a `user_id`, to the API's `/submit` endpoint using a secure API key.
 3.  Receive a JSON object containing the user's scored profile.
 4.  Optionally, retrieve a cached profile using the `/user_id` endpoint.
 
@@ -22,17 +18,50 @@ The API handles all scoring logic, including item weighting, reverse-coded items
 
 ---
 
-## 2. API Endpoints
+## 2. API Environment & Authentication
 
-**Base URL:** (To be determined by deployment, e.g., `https://api.numi.one`)
-**Local Development URL:** `http://127.0.0.1:8000`
+### 2.1. API URL
 
-### 2.1. Submit Assessment Answers
+The live API is hosted on Render. The URL will follow this structure:
+
+*   **Base URL:** `https://numi-instinct-api.onrender.com` 
+
+The local development URL remains `http://127.0.0.1:8000`.
+
+### 2.2. Authentication
+
+The API is protected by a secret API key. All requests to protected endpoints must include this key in the `X-API-Key` HTTP header.
+
+*   **Header Name:** `X-API-Key`
+*   **Header Value:** The secret API key provided for your application.
+
+**How to get the API Key:**
+The API key is managed as an environment variable in the Render dashboard for the `numi-instinct-api` service. You can find it under the **Environment** tab. It will be a securely generated random string.
+
+**Example Request with Authentication:**
+```bash
+curl -X POST "https://numi-instinct-api.onrender.com/v1/instinct-map/submit" \
+     -H "Content-Type: application/json" \
+     -H "X-API-Key: your-secret-api-key-from-render" \
+     -d '{
+           "user_id": "test-user-001",
+           "answers": [
+             {"slot": "1A", "answer": "A"},
+             {"slot": "1B", "answer": "B"}
+           ]
+         }'
+```
+
+---
+
+## 3. API Endpoints
+
+### 3.1. Submit Assessment Answers
 
 *   **Endpoint:** `POST /v1/instinct-map/submit`
 *   **Method:** `POST`
 *   **Description:** Submits a user's answers for scoring and profile generation. The generated profile is also cached server-side for a limited time (default 24 hours).
-*   **Authentication:** For production, this endpoint should ideally be protected. The frontend should send a JWT obtained from Supabase upon user login. The API can then be configured to validate this token. (Current version does not enforce JWT validation but expects `user_id`).
+*   **Authentication:** **Required.** See section 2.2 for details.
 
 #### Request Payload (`application/json`):
 
@@ -53,133 +82,89 @@ The API handles all scoring logic, including item weighting, reverse-coded items
 
 #### Response Payload (200 OK - `application/json`):
 
-Upon successful processing, the API returns a `Profile` object with the following structure (detailed in Section 3):
-
-```json
-// See Section 3 for detailed field descriptions
-{
-  "headline": "string",
-  "signature": "string",
-  "driver": "string",
-  "creation": "string",
-  "growth_edge": "string",
-  "instinct_bars": { /* ... */ },
-  "clashes": [],
-  "timestamp": "string",
-  "all_subtype_scores": { /* ... */ },
-  "instinct_strengths": { /* ... */ }
-}
-```
+Upon successful processing, the API returns a `Profile` object with the structure detailed in Section 4.
 
 #### Error Responses:
-*   `400 Bad Request`: If `user_id` or `answers` are missing or malformed (e.g., empty answers list).
-*   `422 Unprocessable Entity`: If the request payload doesn't match the expected Pydantic model structure (e.g., incorrect data types). FastAPI handles this automatically.
+*   `400 Bad Request`: If `user_id` or `answers` are missing or malformed.
+*   `403 Forbidden`: If the `X-API-Key` header is missing or contains an invalid key.
+*   `422 Unprocessable Entity`: If the request payload doesn't match the expected structure.
 *   `500 Internal Server Error`: If an unexpected error occurs during scoring.
 
-### 2.2. Retrieve Cached Profile
+### 3.2. Retrieve Cached Profile
 
 *   **Endpoint:** `GET /v1/instinct-map/{user_id}`
 *   **Method:** `GET`
 *   **Description:** Retrieves a previously calculated and cached Instinct Map profile for a given `user_id`.
-*   **Authentication:** Similar to the submit endpoint, this should ideally be protected in production.
+*   **Authentication:** **Required.** See section 2.2 for details.
 
 #### Path Parameters:
 *   `user_id` (string, required): The unique identifier for the user whose profile is being requested.
 
 #### Response Payload (200 OK - `application/json`):
 
-Returns the `Profile` object (see Section 3 for details) if found.
-
-```json
-// See Section 3 for detailed field descriptions
-{
-  "headline": "string",
-  "signature": "string",
-  "driver": "string",
-  "creation": "string",
-  "growth_edge": "string",
-  "instinct_bars": { /* ... */ },
-  "clashes": [],
-  "timestamp": "string",
-  "all_subtype_scores": { /* ... */ },
-  "instinct_strengths": { /* ... */ }
-}
-```
+Returns the `Profile` object if found. See Section 4 for details.
 
 #### Error Responses:
-*   `400 Bad Request`: If `user_id` is not provided in the path.
+*   `403 Forbidden`: If the `X-API-Key` header is missing or contains an invalid key.
 *   `404 Not Found`: If no cached profile exists for the given `user_id`.
 *   `422 Unprocessable Entity`: If the `user_id` path parameter is invalid.
 
 ---
 
-## 3. Profile Object Details
+## 4. Profile Object Details
 
 The following describes each field in the JSON `Profile` object returned by the API.
 
 1.  **`headline`: string**
-    *   **Description:** The main, high-level descriptive label for the user's overall Instinct Map profile (e.g., "Sprint Builder"). Derived from the combination of their `creation` instinct subtype and their `driver` instinct via the `Flowprint_Labels_54.tsv` lookup table.
+    *   **Description:** The main, high-level descriptive label for the user's overall Instinct Map profile (e.g., "Sprint Builder").
     *   **Frontend Use:** Display prominently as the user's primary "type" or profile name.
 
 2.  **`signature`: string**
-    *   **Description:** A more detailed sentence or short paragraph elaborating on the `headline` (e.g., "You channel burst-mode energy to architect systems that stand the test of time..."). Also from `Flowprint_Labels_54.tsv`.
+    *   **Description:** A more detailed sentence or short paragraph elaborating on the `headline`.
     *   **Frontend Use:** Display underneath or alongside the headline to provide more personality and context.
 
 3.  **`driver`: string**
-    *   **Description:** The name of the user's determined **Driver Instinct** (e.g., `"Energy Rhythm"`, `"Input Style"`). This is one of the nine non-Creation instincts that most strongly characterizes their general approach.
-    *   **Frontend Use:** Highlight as one of their core instincts. Use for specific descriptions or coaching related to this Driver.
+    *   **Description:** The name of the user's determined **Driver Instinct** (e.g., `"Energy Rhythm"`).
+    *   **Frontend Use:** Highlight as one of their core instincts.
 
 4.  **`creation`: string**
-    *   **Description:** The name of the user's determined **Creation Instinct subtype** (e.g., `"Architect"`, `"Storyteller"`). This describes their primary mode of creating or bringing things into the world.
-    *   **Frontend Use:** Highlight as their core creative style. Use for specific descriptions or coaching related to this Creation subtype.
+    *   **Description:** The name of the user's determined **Creation Instinct subtype** (e.g., `"Architect"`).
+    *   **Frontend Use:** Highlight as their core creative style.
 
 5.  **`growth_edge`: string**
-    *   **Description:** The name of the instinct identified as the user's **Growth Edge**. (v1 logic: lowest Strength AND highest standard deviation between its subtypes).
-    *   **Frontend Use:** Point out as an area for potential development or awareness. Descriptions for this instinct can be framed as growth opportunities.
+    *   **Description:** The name of the instinct identified as the user's **Growth Edge**.
+    *   **Frontend Use:** Point out as an area for potential development.
 
 6.  **`instinct_bars`: object (dictionary)**
-    *   **Description:** A dictionary where each key is the name of one of the **10 Instincts** (e.g., `"Energy Rhythm"`, `"Input Style"`, ..., `"Creation Instinct"`). The value for each instinct is another dictionary containing:
-        *   **`percentile`: null (or number)**
-            *   **v1:** Always `null`.
-            *   **Future:** Will hold the user's percentile score (0-100) for that instinct once norming data is available.
-            *   **Frontend Use (v1):** Since `percentile` is null, hide numeric percentile labels. Bars can be scaled based on the `instinct_strengths` field (see below) to represent raw strength (typically 0-10 range).
-        *   **`dominantSubtype`: string (or null)**
-            *   The name of the subtype with the highest raw score within that instinct. If all subtypes score 0, it's the first subtype from the glossary for that instinct (tie-breaker).
-            *   **Frontend Use:** For each of the 10 instincts, display this dominant subtype (e.g., "Within Energy Rhythm, your dominant tendency is Bursty."). This is key for a multi-faceted profile view.
+    *   **Description:** A dictionary where each key is the name of one of the **10 Instincts**. The value for each instinct contains:
+        *   **`percentile`: null** (or number). Currently `null`.
+        *   **`dominantSubtype`: string**. The name of the subtype with the highest raw score within that instinct.
+    *   **Frontend Use:** For each of the 10 instincts, display this dominant subtype.
 
 7.  **`clashes`: array of strings**
-    *   **Description:**
-        *   **v1:** Always an empty array `[]`.
-        *   **Future:** Will list names of instincts where the user has a significant internal "clash" (e.g., very high score in one subtype and very low in its polar opposite within the same instinct, based on z-scores).
-    *   **Frontend Use (v1):** Can be ignored or a note like "No significant internal clashes detected at this stage."
+    *   **Description:** Currently always an empty array `[]`.
+    *   **Frontend Use:** Can be ignored.
 
 8.  **`timestamp`: string (ISO 8601 format)**
-    *   **Description:** The UTC date and time when the profile was calculated (e.g., `"2025-06-03T17:18:45.355792+00:00"`).
+    *   **Description:** The UTC date and time when the profile was calculated.
     *   **Frontend Use:** Can be displayed as "Profile generated on..." or for record-keeping.
 
 9.  **`all_subtype_scores`: object (dictionary)**
-    *   **Description:** A dictionary where each key is the name of a defined **subtype** (e.g., `"Bursty"`, `"Steady"`, `"Analyzer"`, `"Architect"`) across all instincts, and the value is its calculated **raw score** (integer, typically 0-10, but can vary per instinct based on number of items).
-    *   **Example:** `{"Bursty": 5, "Steady": 2, "Cyclical": 0, ...}`
-    *   **Frontend Use:** This provides the most granular data. Use this to:
-        *   Render detailed bar charts showing the scores for *all* subtypes within each instinct.
-        *   Allow users to see their specific scores for non-dominant subtypes.
-        *   Build rich, interactive dashboards exploring the nuances of their profile.
+    *   **Description:** A dictionary mapping every **subtype** to its calculated **raw score** (integer).
+    *   **Example:** `{"Bursty": 5, "Steady": 2, ...}`
+    *   **Frontend Use:** This provides the most granular data for detailed dashboards and charts.
 
 10. **`instinct_strengths`: object (dictionary)**
-    *   **Description:** A dictionary where each key is the name of one of the **10 Instincts**, and the value is its calculated **Strength** (float, typically in a 0-10 range, representing the mean of its subtype scores).
+    *   **Description:** A dictionary mapping each of the **10 Instincts** to its calculated **Strength** (float).
     *   **Example:** `{"Energy Rhythm": 3.75, "Input Style": 1.5, ...}`
-    *   **Frontend Use:** This is the primary data point to drive the visual length/intensity of bars for each of the 10 main instincts in a summary dashboard view, as per the original spec ("UI will scale bars off raw Strength (0-10)").
+    *   **Frontend Use:** This is the primary data point to drive the visual length/intensity of bars for each of the 10 main instincts in a summary view.
 
 ---
 
-## 4. Frontend Implementation Notes
+## 5. Frontend Implementation Notes
 
-*   **Data for Dashboard:** The `all_subtype_scores` and `instinct_strengths` fields provide rich data for creating detailed dashboards. The `dominantSubtype` within `instinct_bars` gives a quick summary for each instinct.
-*   **Displaying Instincts:** It's recommended to display all 10 instincts, showing the user's `dominantSubtype` within each and a visual representation of the `instinct_strengths`.
-*   **Tooltips/Definitions:** The frontend will need access to the `Subtype_Glossary.csv` content (or a JSON version of it) to display definitions for instincts and subtypes when a user hovers over or clicks on them.
-*   **Error Handling:** Implement appropriate error handling for API call failures (network errors, 4xx/5xx responses).
-*   **Loading States:** Provide loading indicators while the API call to `/submit` is in progress, as scoring might take a moment.
-
----
-
-This brief should provide a solid foundation for integrating with the NuMi Instinct Map API. Please refer to the Pydantic models in `models.py` in the API codebase for the canonical schema definitions. 
+*   **Store the API Key Securely:** The `X-API-Key` should be stored securely in your app's environment configuration, not hardcoded into the source.
+*   **Data for Dashboard:** The `all_subtype_scores` and `instinct_strengths` fields provide the primary data for creating detailed dashboards.
+*   **Tooltips/Definitions:** The frontend will need a way to display definitions for instincts and subtypes (e.g., from a local JSON file or a separate API).
+*   **Error Handling:** Implement robust error handling for API call failures, especially for `403 Forbidden` in case of an invalid key and `500 Internal Server Error`.
+*   **Loading States:** Provide loading indicators while the API call to `/submit` is in progress, as scoring may take a moment. 

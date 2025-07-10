@@ -1,6 +1,8 @@
-from fastapi import FastAPI, HTTPException, Body, Depends
+from fastapi import FastAPI, HTTPException, Body, Depends, Security
+from fastapi.security import APIKeyHeader
 from typing import List, Dict
 import logging
+import os
 
 from models import UserAnswer, Profile # Pydantic models
 from scoring_engine import score_answers
@@ -17,6 +19,19 @@ app = FastAPI(
     description="API for submitting NuMi Instinct Assessment answers and retrieving profiles."
 )
 
+API_KEY = os.environ.get("API_KEY") 
+API_KEY_NAME = "X-API-Key"
+
+api_key_header_auth = APIKeyHeader(name=API_KEY_NAME, auto_error=True)
+
+async def get_api_key(api_key_header: str = Security(api_key_header_auth)):
+    if api_key_header != API_KEY:
+        raise HTTPException(
+            status_code=403, 
+            detail="Could not validate credentials"
+        )
+    return api_key_header
+
 # Dependency for profile store (allows for easier testing and future replacement)
 async def get_profile_store() -> ProfileStore:
     return profile_store_instance
@@ -25,7 +40,8 @@ async def get_profile_store() -> ProfileStore:
 async def submit_assessment(
     user_id: str = Body(..., embed=True, description="Unique identifier for the user"), 
     answers: List[UserAnswer] = Body(..., embed=True, description="List of user answers to assessment questions"),
-    store: ProfileStore = Depends(get_profile_store)
+    store: ProfileStore = Depends(get_profile_store),
+    api_key: str = Depends(get_api_key)
 ):
     """
     Accepts a user's 100 answers to the NuMi Instinct Assessment, 
@@ -62,8 +78,9 @@ async def submit_assessment(
 
 @app.get("/v1/instinct-map/{user_id}", response_model=Profile)
 async def get_assessment_profile(
-    user_id: str,
-    store: ProfileStore = Depends(get_profile_store)
+    user_id: str, 
+    store: ProfileStore = Depends(get_profile_store),
+    api_key: str = Depends(get_api_key)
 ):
     """
     Retrieves a previously calculated and cached Instinct Map profile for a given user_id.
@@ -101,6 +118,11 @@ async def root():
 
 if __name__ == "__main__":
     import uvicorn
+    # This is for local development. For production, the API key is set via environment variables.
+    if not API_KEY:
+        print("Warning: API_KEY environment variable not set. Using a default for local dev.")
+        API_KEY="dev-key"
+
     # Ensure the data directory is correctly located relative to this main.py if not using NUMI_DATA_PATH
     # This is more for local dev; in Docker, paths should be set up correctly.
     # from config import DATA_PATH # To print and check

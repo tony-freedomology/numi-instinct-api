@@ -6,4 +6,6 @@ services:
     startCommand: "gunicorn -w 2 -k uvicorn.workers.UvicornWorker main:app"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10.12 
+        value: 3.10.12
+      - key: API_KEY
+        generateValue: true 
